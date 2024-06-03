@@ -1,11 +1,16 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
+import os.path
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+db_path = os.path.join(BASE_DIR, "database.db")
 
 app = Flask(__name__)
+app.secret_key = '6e8a32c50c9b4fc1a8c2d2df6a8b0a6d07a1c565b5f6452f'
 
 
 def get_db_connection():
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     return conn
 
