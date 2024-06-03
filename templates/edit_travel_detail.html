@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Travel Detail</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='edit_travel.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Travel Detail</h1>
+        <form method="POST">
+            <label for="travel_date">Travel Date:</label>
+            <input type="date" id="travel_date" name="travel_date" value="{{ travel_detail['travel_date'] }}" required>
+            <label for="travel_time">Travel Time:</label>
+            <input type="time" id="travel_time" name="travel_time" value="{{ travel_detail['travel_time'] }}" required>
+            <label for="departure">Departure:</label>
+            <input type="text" id="departure" name="departure" value="{{ travel_detail['departure'] }}" required>
+            <label for="destination">Destination:</label>
+            <input type="text" id="destination" name="destination" value="{{ travel_detail['destination'] }}" required>
+            <button type="submit">Update Travel Detail</button>
+        </form>
+        <p><a href="{{ url_for('travel_details') }}">Back to Travel Details</a></p>
+    </div>
+</body>
+</html>

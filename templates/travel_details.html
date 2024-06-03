@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='travel_details.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Travel Details</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Travel Date</th>
+                    <th>Travel Time</th>
+                    <th>Departure</th>
+                    <th>Destination</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for detail in travel_details %}
+                <tr>
+                    <td>{{ detail.travel_date }}</td>
+                    <td>{{ detail.travel_time }}</td>
+                    <td>{{ detail.departure }}</td>
+                    <td>{{ detail.destination }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_travel_detail', travel_id=detail.id) }}">Edit</a>
+                    </td>
+                    <td>
+                        <form method="POST" action="{{ url_for('delete_travel_detail', travel_id=detail.id) }}">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p><a href="{{ url_for('add_travel_detail') }}">Add Travel Detail</a></p>
+        <p><a href="{{ url_for('logout') }}">Logout</a></p>
+    </div>
+</body>
+</html>
